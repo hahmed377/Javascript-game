@@ -20,21 +20,18 @@ $('#Startgame').click(function(){
 
   $('#pageBeginCountdown').show();
   $('p').show();
-}
-})
-$('#Instructions').click(function(){
-  if ($(this).text().toLowerCase()== 'instructions') {
-    $('h2').show();
-    $('p').hide();
-    $('button').hide();
-    $('.grid').hide();
-    $('h1').hide();
-
   }
-})
-
-
-  ProgressCountdown(10, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => alert(`Page has started: ${value}.`));
+  })
+  $('#Instructions').click(function(){
+    if ($(this).text().toLowerCase()== 'instructions') {
+      $('h2').show();
+      $('p').hide();
+      $('button').hide();
+      $('.grid').hide();
+      $('h1').hide();
+      }
+    })
+    ProgressCountdown(10, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => alert(`Page has started: ${value}.`));
 
   function ProgressCountdown(timeleft, bar, text) {
     for (var i = 0; i < 6; i++) {
@@ -53,8 +50,6 @@ $('#Instructions').click(function(){
       $('#bar').value = timeleft;
       document.getElementById(text).textContent = timeleft;
 
-
-
       if (timeleft <= 0) {
         $('.cell').on("click", function(){
           if ($(this).hasClass("x")||$(this).hasClass("o"))
@@ -62,10 +57,7 @@ $('#Instructions').click(function(){
             alert("You've already shot at this location, cap'n");
           }  if (player == 1) {
               $(this).addClass("x");
-
-
             }
-
         })
         clearInterval(countdownTimer);
         $('p').show();
@@ -86,9 +78,5 @@ $('#Instructions').click(function(){
       }
     }, 1000);
   });
-
   }
-// score board
-
-
 })
