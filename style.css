@@ -14,16 +14,6 @@ h1{
   border-collapse: collapse;
   border: 1px solid black;
 }
-.grid2{
-
-  margin-top: 70px;
-  margin-right: 100px;
-  cursor: pointer;
-  height: 160px;
-  width: 160px;
-  border-collapse: collapse;
-  border: 1px solid black;
-}
 .cell{
   border: 1px solid black;
 }
@@ -40,6 +30,11 @@ h1{
 }
 .o{
   background-color: red;
+}
+.battleShip{
+  width: 27px;
+  height: 18.4px;
+  display: inline-block;
 }
 h2{
   text-align: center;

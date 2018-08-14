@@ -3,6 +3,7 @@ $(document).ready(function(){
 var player = 1;
 var randomPosition = Math.floor(Math.random() * 34);
 var array = [];
+var score = 0;
 $(".grid1").hide();
 $('h2').hide();
 $('p').hide();
@@ -38,15 +39,20 @@ $('#Instructions').click(function(){
   function ProgressCountdown(timeleft, bar, text) {
     for (var i = 0; i < 6; i++) {
       randomPosition = Math.floor(Math.random() * 34);
-       $('#square' + randomPosition).addClass('o');
-
+      $('#square' + randomPosition).append("<div class='battleShip'></div>");
+       $(".battleShip").addClass('o');
     }
-    console.log($(".cell")[randomPosition]);
+  //   for (var i = 0; i < $('.cell').length; i++) {
+  //     $('.cell')[i].removeClass('o');
+  // }
+
+
   return new Promise((resolve, reject) => {
     var countdownTimer = setInterval(() => {
       timeleft--;
       $('#bar').value = timeleft;
       document.getElementById(text).textContent = timeleft;
+
 
 
       if (timeleft <= 0) {
@@ -57,23 +63,32 @@ $('#Instructions').click(function(){
           }  if (player == 1) {
               $(this).addClass("x");
 
-            }else {
-              // same again add class if empty and change the player to player 1.
-              $(this).addClass("o");
 
             }
+
         })
         clearInterval(countdownTimer);
-        $('p').hide();
+        $('p').show();
+
         $('#pageBeginCountdown').hide();
         $('h6').show();
+        $('o').hide();
+
+        if (timeleft < 1) {
+              $('.battleShip').removeClass('o');
+              $('.battleShip').click(function(event){
+                score += 10;
+                $(".score").html("score: " + score);
+                // $("score" + score =+ 10);
+                alert("hit you  " + score)
+              })
+        }
       }
     }, 1000);
   });
 
   }
-
-
+// score board
 
 
 })
