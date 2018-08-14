@@ -1,12 +1,10 @@
 body {
    background-image: url("images/ship.jpg");
    background-size: cover;
-
 }
 h1{
   text-align: center;
 }
-
 .grid1{
   margin-top: 70px;
   margin-left: 150px;
@@ -28,17 +26,13 @@ h1{
 }
 .cell{
   border: 1px solid black;
-
 }
-
 }
 .left{
   float: left;
-
 }
 .right{
   float: right;
-
 }
 .button{
 }
