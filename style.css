@@ -1,0 +1,49 @@
+body {
+   background-image: url("images/ship.jpg");
+   background-size: cover;
+}
+h1{
+  text-align: center;
+}
+.grid1{
+  margin-top: 70px;
+  margin-left: 150px;
+  cursor: pointer;
+  height: 150px;
+  width: 150px;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+.grid2{
+
+  margin-top: 70px;
+  margin-right: 100px;
+  cursor: pointer;
+  height: 160px;
+  width: 160px;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+.cell{
+  border: 1px solid black;
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.button{
+}
+.x{
+  background-color: blue;
+}
+.o{
+  background-color: red;
+}
+h2{
+  text-align: center;
+}
+p{
+  text-align: center;
+}
