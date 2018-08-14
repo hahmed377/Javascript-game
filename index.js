@@ -6,7 +6,6 @@ player = 1;
   $(".cell").on("click", change)
 
   function change() {
-    
   }
 
 })
