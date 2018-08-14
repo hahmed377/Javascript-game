@@ -36,12 +36,10 @@ h1{
 .button{
 }
 .x{
-  background-image: url("images/miss.png");
-  background-size: contain;
+  background-color: blue;
 }
 .o{
-  background-image: url("images/ship.png");
-  background-size: contain;
+  background-color: red;
 }
 h2{
   text-align: center;

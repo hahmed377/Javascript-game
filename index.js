@@ -1,6 +1,8 @@
 // load the jquery after the page has been loaded.
 $(document).ready(function(){
-var randomPosition = Math.floor(Math.random() * 81);
+var player = 1;
+var randomPosition = Math.floor(Math.random() * 34);
+var array = [];
 $(".grid1").hide();
 $('h2').hide();
 $('p').hide();
@@ -30,17 +32,37 @@ $('#Instructions').click(function(){
   }
 })
 
-ProgressCountdown(10, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => alert(`Page has started: ${value}.`));
 
-function ProgressCountdown(timeleft, bar, text) {
+  ProgressCountdown(10, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => alert(`Page has started: ${value}.`));
+
+  function ProgressCountdown(timeleft, bar, text) {
+    for (var i = 0; i < 6; i++) {
+      randomPosition = Math.floor(Math.random() * 34);
+       $('#square' + randomPosition).addClass('o');
+
+    }
+    console.log($(".cell")[randomPosition]);
   return new Promise((resolve, reject) => {
     var countdownTimer = setInterval(() => {
       timeleft--;
-
-      document.getElementById(bar).value = timeleft;
+      $('#bar').value = timeleft;
       document.getElementById(text).textContent = timeleft;
 
+
       if (timeleft <= 0) {
+        $('.cell').on("click", function(){
+          if ($(this).hasClass("x")||$(this).hasClass("o"))
+          {
+            alert("You've already shot at this location, cap'n");
+          }  if (player == 1) {
+              $(this).addClass("x");
+
+            }else {
+              // same again add class if empty and change the player to player 1.
+              $(this).addClass("o");
+
+            }
+        })
         clearInterval(countdownTimer);
         $('p').hide();
         $('#pageBeginCountdown').hide();
@@ -48,5 +70,10 @@ function ProgressCountdown(timeleft, bar, text) {
       }
     }, 1000);
   });
-}
+
+  }
+
+
+
+
 })
