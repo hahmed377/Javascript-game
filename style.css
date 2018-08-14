@@ -1,0 +1,28 @@
+body {
+   background-image: url("images/ship.jpg");
+   background-size: cover;
+
+}
+h1{
+  text-align: center;
+}
+
+.grid{
+  margin-top: 70px;
+  margin-left: 170px;
+  cursor: pointer;
+  height: 130px;
+  width: 130px;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+.cell{
+  border: 1px solid black;
+
+}
+.x{
+  background-color: blue;
+}
+.o{
+  background-color: red;
+}
