@@ -6,6 +6,7 @@ $('h2').hide();
 $('p').hide();
 $('#pageBeginCountdown').hide();
 $('h5').hide();
+$('h6').hide();
 
 $('#Startgame').click(function(){
   if ($(this).text().toLowerCase()== 'start game') {
@@ -13,15 +14,15 @@ $('#Startgame').click(function(){
   $('.grid1').show();
   $('h1').hide();
   $('h2').hide();
+
   $('#pageBeginCountdown').show();
   $('p').show();
-
 }
 })
 $('#Instructions').click(function(){
   if ($(this).text().toLowerCase()== 'instructions') {
     $('h2').show();
-    $('p').show();
+    $('p').hide();
     $('button').hide();
     $('.grid').hide();
     $('h1').hide();
@@ -41,11 +42,11 @@ function ProgressCountdown(timeleft, bar, text) {
 
       if (timeleft <= 0) {
         clearInterval(countdownTimer);
-        resolve(true);
+        $('p').hide();
+        $('#pageBeginCountdown').hide();
+        $('h6').show();
       }
     }, 1000);
   });
 }
-
-
 })
