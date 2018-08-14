@@ -1,6 +1,6 @@
 // load the jquery after the page has been loaded.
 $(document).ready(function(){
-
+var randomPosition = Math.floor(Math.random() * 81);
 $(".grid1").hide();
 $('h2').hide();
 $('p').hide();
