@@ -1,53 +1,62 @@
 // load the jquery after the page has been loaded.
 $(document).ready(function(){
-var player = 1;
-var randomPosition = Math.floor(Math.random() * 34);
-var array = [];
-var minClick = 6;
-var score = 0;
-$(".grid1").hide();
-$('h2').hide();
-$('p').hide();
-$('#pageBeginCountdown').hide();
-$('h5').hide();
-$('h6').hide();
+  var player = 1;
+  var randomPosition = Math.floor(Math.random() * 34);
+  var array = [];
+  var battleShip = $('battleShip')
+  var minClick = 6;
+  var score = 0;
+  var attempts = 5;
+  var battleShip = $('battleShip');
+  $(".grid1").hide();
+  $('h2').hide();
+  $('p').hide();
+  $('#pageBeginCountdown').hide();
+  $('h5').hide();
+  $('h6').hide();
 
-$('#Startgame').click(function(){
-  if ($(this).text().toLowerCase()== 'start game') {
-    $('button').hide();
-    $('.grid1').show();
-    $('h1').hide();
-    $('h2').hide();
+  $('#Startgame').click(function(){
+    if ($(this).text().toLowerCase()== 'start game') {
+      $('button').hide();
+      $('.grid1').show();
+      $('h1').hide();
+      $('h2').hide();
 
-    $('#pageBeginCountdown').show();
-    $('p').show();
-  }
-})
-$('#Instructions').click(function(){
-  if ($(this).text().toLowerCase()== 'instructions') {
-    $('h2').show();
-    $('p').hide();
-    $('button').hide();
-    $('.grid').hide();
-    $('h1').hide();
-  }
-})
-ProgressCountdown(10, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => alert(`Page has started: ${value}.`));
+      $('#pageBeginCountdown').show();
+      $('p').show();
+    }
+  })
+  $('#Instructions').click(function(){
+    if ($(this).text().toLowerCase()== 'instructions') {
+      $('h2').show();
+      $('p').hide();
+      $('button').hide();
+      $('.grid').hide();
+      $('h1').hide();
+    }
+  })
+  ProgressCountdown(10, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => alert(`Page has started: ${value}.`));
 
-function ProgressCountdown(timeleft, bar, text) {
-  for (var i = 0; i < 6; i++) {
-    randomPosition = Math.floor(Math.random() * 34);
-    $('#square' + randomPosition).append("<div class='battleShip'></div>");
-    $(".battleShip").addClass('o');
-  }
-return new Promise((resolve, reject) => {
-  var countdownTimer = setInterval(() => {
-    timeleft--;
-    $('#bar').value = timeleft;
-    document.getElementById(text).textContent = timeleft;
+  function ProgressCountdown(timeleft, bar, text) {
+    for (var i = 0; i < 6; i++) {
+      randomPosition = Math.floor(Math.random() * 34);
+      $('#square' + randomPosition).append("<div class='battleShip'></div>");
+      $(".battleShip").addClass('o');
+    }
+
+  return new Promise((resolve, reject) => {
+    var countdownTimer = setInterval(() => {
+      timeleft--;
+      $('#bar').value = timeleft;
+      document.getElementById(text).textContent = timeleft;
 
     if (timeleft <= 0) {
       $('.cell').on("click", function(){
+        if (attempts >= 1) {
+          attempts--;
+          $(".attempts").html("attempts:" + attempts);
+          console.log(attempts);
+          }
         if ($(this).hasClass("x")||$(this).hasClass("o"))
         {
           alert("You've already shot at this location, cap'n");
@@ -57,7 +66,9 @@ return new Promise((resolve, reject) => {
         }
       })
       clearInterval(countdownTimer);
-      $('p').show();
+      $('p').hide();
+      $('.score').show();
+      $('.attempts').show()
 
       $('#pageBeginCountdown').hide();
       $('h6').show();
@@ -73,11 +84,11 @@ return new Promise((resolve, reject) => {
           score += 10;
           $(".score").html("score: " + score);
           alert("hit you  " + score);
-        })
-      }
-    }
-  }, 1000);
-});
+          })
 
-}
+          }
+        }
+      }, 1000);
+    });
+  }
 })

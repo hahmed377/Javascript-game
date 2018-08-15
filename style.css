@@ -32,6 +32,7 @@ h1{
   background-color: red;
 }
 .battleShip{
+  display: none;
   width: 27px;
   height: 18.4px;
   display: inline-block;
@@ -40,5 +41,8 @@ h2{
   text-align: center;
 }
 p{
+  text-align: center;
+}
+p .attempts{
   text-align: center;
 }
