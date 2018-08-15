@@ -56,10 +56,14 @@ $(document).ready(function(){
           attempts--;
           $(".attempts").html("attempts:" + attempts);
           console.log(attempts);
-          }
+          if (attempts == 0) {
+            alert("out of turns");
+             $('.cell').off("click");
+          };
+        };
         if ($(this).hasClass("x")||$(this).hasClass("o"))
         {
-          alert("You've already shot at this location, cap'n");
+          displayMessage("You've already shot at this location, cap'n");
         }
         if (player == 1) {
               $(this).addClass("x");
@@ -68,7 +72,7 @@ $(document).ready(function(){
       clearInterval(countdownTimer);
       $('p').hide();
       $('.score').show();
-      $('.attempts').show()
+      $('.attempts').show();
 
       $('#pageBeginCountdown').hide();
       $('h6').show();
@@ -79,16 +83,15 @@ $(document).ready(function(){
         test = 5;
         for (var i = 0; i < minClick; i++) {
           $('')
-        }
+        };
         $('.battleShip').click(function(event){
           score += 10;
           $(".score").html("score: " + score);
-          alert("hit you  " + score);
-          })
+        });
 
-          }
-        }
+      };
+    };
       }, 1000);
     });
-  }
-})
+  };
+});
