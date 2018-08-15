@@ -67,8 +67,8 @@ $(document).ready(function(){
         }
         if (player == 1) {
               $(this).addClass("x");
-        }
-      })
+        };
+      });
       clearInterval(countdownTimer);
       $('p').hide();
       $('.score').show();
