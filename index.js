@@ -87,10 +87,9 @@ $(document).ready(function(){
         $('.battleShip').click(function(event){
           score += 10;
           $(".score").html("score: " + score);
-        });
-
-      };
-    };
+            });
+          };
+        };
       }, 1000);
     });
   };
