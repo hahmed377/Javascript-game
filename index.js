@@ -6,7 +6,9 @@ $(document).ready(function(){
   var battleShip = $('battleShip')
   var minClick = 6;
   var score = 0;
+  var score2 = 0;
   var attempts = 5;
+  var highScore = 0;
   var battleShip = $('battleShip');
   $(".grid1").hide();
   $('h2').hide();
@@ -24,8 +26,10 @@ $(document).ready(function(){
 
       $('#pageBeginCountdown').show();
       $('p').show();
+      makingGrid();
     }
   })
+
   $('#Instructions').click(function(){
     if ($(this).text().toLowerCase()== 'instructions') {
       $('h2').show();
@@ -35,63 +39,105 @@ $(document).ready(function(){
       $('h1').hide();
     }
   })
-  ProgressCountdown(10, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => alert(`Page has started: ${value}.`));
 
-  function ProgressCountdown(timeleft, bar, text) {
+  function countdown() {
+    ProgressCountdown(5, 'pageBeginCountdown', 'pageBeginCountdownText');
+  }
+
+  function reset() {
+    $("div.battleShip").remove();
+    console.log("test");
+    $("td.cell").removeClass("x");
+    attempts = 5;
+    score = 0;
+  }
+var positionArray = [];
+  function makingGrid() {
+    countdown();
     for (var i = 0; i < 6; i++) {
       randomPosition = Math.floor(Math.random() * 34);
+      positionArray.push(randomPosition);
+      console.log(positionArray);
       $('#square' + randomPosition).append("<div class='battleShip'></div>");
       $(".battleShip").addClass('o');
     }
+  }
+function redrawGrid() {
+  for (var i = 0; i < positionArray.length; i++) {
+    $('#square' + positionArray[i]).append("<div class='battleShip'></div>");
+    $(".battleShip").addClass('o');
+  }
+}
 
-  return new Promise((resolve, reject) => {
+  function disableClicks() {
+    if (attempts == 0) {
+      attempts--;
+      $('.cell').off("click");
+      // alert("out of turns");
+      // console.log(attempts);
+    };
+
+  }
+  function hide() {
+    $('p').hide();
+    $('.score').show();
+    $('.attempts').show();
+
+    $('#pageBeginCountdown').hide();
+    $('h6').show();
+    $('o').hide();
+  }
+  function hideShips(timeleft) {
+    if (timeleft < 1) {
+      $('.battleShip').removeClass('o');
+      $('.battleShip').click(function(event){
+        score += 10;
+        $(".score").html("score: " + score);
+
+      });
+    };
+  }
+
+  function ProgressCountdown(timeleft, bar, text) {
     var countdownTimer = setInterval(() => {
       timeleft--;
       $('#bar').value = timeleft;
       document.getElementById(text).textContent = timeleft;
+      //allowClick(timeleft);
 
-    if (timeleft <= 0) {
-      $('.cell').on("click", function(){
-        if (attempts >= 1) {
-          attempts--;
-          $(".attempts").html("attempts:" + attempts);
-          console.log(attempts);
-          if (attempts == 0) {
-            alert("out of turns");
-             $('.cell').off("click");
-          };
-        };
-        if ($(this).hasClass("x")||$(this).hasClass("o"))
-        {
-          displayMessage("You've already shot at this location, cap'n");
-        }
-        if (player == 1) {
-              $(this).addClass("x");
-        };
-      });
-      clearInterval(countdownTimer);
-      $('p').hide();
-      $('.score').show();
-      $('.attempts').show();
-
-      $('#pageBeginCountdown').hide();
-      $('h6').show();
-      $('o').hide();
 
       if (timeleft < 1) {
-        $('.battleShip').removeClass('o');
-        test = 5;
-        for (var i = 0; i < minClick; i++) {
-          $('')
-        };
-        $('.battleShip').click(function(event){
-          score += 10;
-          $(".score").html("score: " + score);
+        //turns click on
+        $('.cell').on("click", function(){
+          if (attempts > 0) {
+            attempts--;
+            $(".attempts").html("attempts:" + attempts);
+            disableClicks();
+            //turns click off
+          }
+          //if clicked , alert
+          if ($(this).hasClass("x")) {
+            alert("You've already shot at this location, cap'n");
+          }
+          $(this).addClass("x");
+          if (attempts < 1) {
+            reset();
+            console.log("s");
+            redrawGrid();
+
+          }
+
         });
 
-      };
-    };
-      }, 1000);
-    });
+        clearInterval(countdownTimer);
+        hide();
+        hideShips(timeleft);
+
+      }
+      // else if (timeleft <= 0 && attempts == 0) {
+      //   reset();
+      // }
+    }, 1000);
+
   };
 });
