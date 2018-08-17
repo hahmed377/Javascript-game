@@ -129,7 +129,7 @@ $(document).ready(function(){
           if ($(this).hasClass("x")) {
               $('.battleShip').off("click");
           }
-            $(this).addClass("x");
+          $(this).addClass("x");
         // this will add the class x after the ship is clicked on
       });
     };
@@ -147,7 +147,6 @@ $(document).ready(function(){
       timeleft--;
       $('#bar').value = timeleft;
       document.getElementById(text).textContent = timeleft;
-
       if (timeleft < 1) {
         //turns click on
         $('.cell').on("click", function(event){
