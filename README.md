@@ -29,10 +29,10 @@ The game starts with the user greeted by the home screen and from here they can 
 
 Once the player clicks on start game they are shown a timer for five seconds and where the ships are located in the grids. When the timer runs out the ships will disappear and the user will need to remember where they are located and try and hit as many ships before the attempts runs out. After the first player the grid resets and new ships are displayed in new random positions and the second player would need to try and beat the score of the first player and the score will be displayed in the leaderboards.
 
-![images](/images/Screenshots/forReadME/home.png)
+![images](images/Screenshots/forReadME/home.png)
 
-![](/images/Screenshots/forReadME/Instructions.png)
+![](images/Screenshots/forReadME/Instructions.png)
 
-![](/images/Screenshots/forReadME/StartGame.png)
+![](images/Screenshots/forReadME/StartGame.png)
 
-![](/images/Screenshots/forReadME/leaderboards.png)
+![](images/Screenshots/forReadME/leaderboards.png)
