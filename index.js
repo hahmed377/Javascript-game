@@ -137,7 +137,7 @@ $(document).ready(function(){
   // this will retrieve the item from local storage and added to a list.
   function displayScore() {
     for (var i = 1; i < 3; i++) {
-    $(".leaderboards").append("<li>"+localStorage.getItem(i)+"</li>");
+      $(".leaderboards").append("<li>"+localStorage.getItem(i)+"</li>");
     }
   }
 
