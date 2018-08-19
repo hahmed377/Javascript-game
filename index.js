@@ -11,9 +11,11 @@ $(document).ready(function(){
   var minClick = 6;
   var score = 0;
   var score2 = 0;
-  var attempts = 10;
+  var attempts = 15;
   var highScore = 0;
   var name;
+  var cannon = new Audio('audio/Cannon+5.wav');
+  var miss = new Audio("");
   // hides everything from the home page.
   $(".grid1").hide();
   $('h2').hide();
@@ -25,6 +27,8 @@ $(document).ready(function(){
   $(".leaderboards").hide();
   $(".LeaderboardsForPlayer").hide();
   $("#winner").hide();
+  $(".left").hide();
+  $(".forWinner").hide();
 
 // once the start button get clicked on the timer starts.
   $('#Startgame').click(function(){
@@ -43,6 +47,9 @@ $(document).ready(function(){
       $(".leaderboards").hide();
       $("#leaderboards").hide();
       $("#winner").hide();
+      $(".attackShips").hide();
+      $(".left").show();
+      $(".forWinner").hide();
       // function called to allocate random positions to the grid.
       progressCountdown(5, 'pageBeginCountdown', 'pageBeginCountdownText');
       makingGrid();
@@ -64,6 +71,8 @@ $(document).ready(function(){
       $("#leaderboards").hide();
       $(".leaderboards").hide();
       $(".LeaderboardsForPlayer").hide();
+      $(".attackShips").hide();
+      $(".forWinner").hide();
       $("#winner").hide();
     }
   })
@@ -80,7 +89,9 @@ $(document).ready(function(){
     $('p.textinInstructions').hide();
     $("#leaderboards").hide();
     $(".leaderboards").show();
+    $(".attackShips").hide();
     $(".LeaderboardsForPlayer").show();
+    $(".forWinner").hide();
     displayScore();
   })
   // this function will reset after the attempts runs out for the first player. It will reset the score and attempts back.
@@ -89,7 +100,7 @@ $(document).ready(function(){
     $("div.battleShip").removeClass("x");
     $("div.battleShip").remove();
     $("td.cell").removeClass("x");
-    attempts = 10;
+    attempts = 15;
     score = 0;
     $("#score").html("score: " + score);
     progressCountdown(5, 'pageBeginCountdown', 'pageBeginCountdownText');
@@ -97,8 +108,8 @@ $(document).ready(function(){
   // This function creates random battleship in the cells.
   var positionArray = [];
   function makingGrid() {
-    for (var i = 0; i < 14; i++) {
-      randomPosition = Math.floor(Math.random() * 34);
+    for (var i = 0; i < 15; i++) {
+      randomPosition = Math.floor(Math.random() * 81);
       positionArray.push(randomPosition);
       $('#square' + randomPosition).append("<div class='battleShip'></div>");
       $(".battleShip").addClass('o');
@@ -117,6 +128,7 @@ $(document).ready(function(){
     $('.attempts').show();
     $('#pageBeginCountdown').hide();
     $('h6').show();
+    $(".attackShips").hide();
     $('o').hide();
   }
   function hideShips(timeleft) {
@@ -130,6 +142,7 @@ $(document).ready(function(){
               $('.battleShip').off("click");
           }
           $(this).addClass("x");
+          cannon.play();
         // this will add the class x after the ship is clicked on
       });
     };
@@ -143,10 +156,12 @@ $(document).ready(function(){
 
   function progressCountdown(timeleft, bar, text) {
     $(".cell").off("click");
+
     var countdownTimer = setInterval(() => {
       timeleft--;
       $('#bar').value = timeleft;
       document.getElementById(text).textContent = timeleft;
+
       if (timeleft < 1) {
         //turns click on
         $('.cell').on("click", function(event){
@@ -161,6 +176,12 @@ $(document).ready(function(){
               }
             //calls the function display.
             displayScore();
+            $(".left").hide();
+            $(".grid1").hide();
+            $(".forWinner").show();
+            $(".LeaderboardsForPlayer").show();
+            $(".leaderboards").show();
+            $('h6').hide();
           }
           // when attempts is greater than start to decrementing attempts from 10 until 0.
           if (attempts > 0) {
@@ -181,6 +202,7 @@ $(document).ready(function(){
         clearInterval(countdownTimer);
         hide();
         hideShips(timeleft);
+        
       }
     }, 1000);
   };
