@@ -36,3 +36,7 @@ Once the player clicks on start game they are shown a timer for five seconds and
 ![](images/Screenshots/forReadMe/StartGame.png)
 
 ![](images/Screenshots/forReadMe/leaderboards.png)
+
+![Click here to play the game](file:///Users/tech-06x/coursework/Javascript-game/index.html)
+
+![Download the game here](https://github.com/hahmed377/Javascript-game/tree/dev)
