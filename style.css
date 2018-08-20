@@ -1,0 +1,120 @@
+body {
+   background-image: url("images/adventure-ancient-antique-697662.jpg");
+   background-size: cover;
+}
+h1{
+  text-align: center;
+  font-family: 'Pirata One', cursive;
+  color: white;
+
+}
+.grid1{
+  margin-top: 70px;
+  margin-left: 150px;
+  cursor: pointer;
+  background-image: url("images/water.gif");
+  border-collapse: collapse;
+  border: 1px solid white;
+}
+.cell{
+  border: 1px solid white;
+
+  height: 21px;
+  width: 21px;
+
+}
+.left{
+  float: left;
+  border: 1px solid white;
+  width: 100px;
+  height: 200px;
+}
+.right{
+  float: right;
+}
+.button{
+}
+.x{
+  background-image: url("images/bomb.gif");
+  background-size: contain;
+}
+.o{
+
+  background-image: url("images/ship.png");
+}
+.u{
+  background-color: red;
+
+}
+.battleShip{
+  display: none;
+  width: 10px;
+  height: 17.4px;
+  display: inline-block;
+}
+h2{
+  text-align: center;
+  font-family: 'Pirata One', cursive;
+  color: white;
+}
+p{
+  text-align: center;
+  font-family: 'Pirata One', cursive;
+  color: white;
+}
+p .attempts{
+  text-align: center;
+  font-family: 'Pirata One', cursive;
+  padding-left: 100px;
+  float: left;
+}
+p.textinInstructions{
+  color: white;
+  font-size: 13px;
+}
+p.textinhome{
+  color: white;
+  font-size: 16px;
+}
+h6{
+  text-align: center;
+  font-size: 16px;
+  color: white;
+}
+.left{
+  display: inline-block;
+}
+.ship{
+  margin-bottom: 100px;
+  margin-top: -40px;
+}
+.leaderboards{
+  text-align: center;
+  font-family: 'Pirata One', cursive;
+  color: white;
+}
+.LeaderboardsForPlayer{
+  text-align: center;
+  font-family: 'Pirata One', cursive;
+  color: white;
+}
+h4{
+  text-align: center;
+  font-family: 'Pirata One', cursive;
+  color: white;
+}
+h3{
+  text-align: center;
+  font-family: 'Pirata One', cursive;
+  color: white;
+}
+#winner{
+  float: right;
+  padding-right: 30px;
+}
+.leaderboards{
+  list-style-type: none;
+}
+.attackShips{
+  margin-left: 170px;
+}

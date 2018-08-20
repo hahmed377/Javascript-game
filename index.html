@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Pirata+One" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script
+    src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <title>Sparta battleship</title>
+    </head>
+      <body>
+        <audio autoplay loop preload="auto">
+          <source src="audio/seas.mp3" type="audio/mpeg;">
+        </audio>
+        <h1>Welcome to Sparta battleship</h1>
+        <h2>Instructions</h2>
+        <h4 class="LeaderboardsForPlayer">Leaderboards for players</h4>
+        <h6>Let th' battle commence</h6>
+        <button id="Instructions" name="button">Instructions</button>
+        <button id="Startgame" name="button">Start game</button>
+        <button id="leaderboards" name="button">Leaderboards</button>
+        <div>
+          <ul>
+            <li class = "leaderboards"></li>
+          </ul>
+        </div>
+        <img class="forWinner" src="images/finishShip.gif" width="80px" height="80px">
+        <img class="attackShips" src="images/attackShips.gif" height="70px" width="200"alt="">
+        <h2 class='Instructions'></h2>
+        <div class="row begin-countdown">
+          <div class="text-center">
+            <p class="textinhome"><br><br>Hit Instructions t' know how t' play.<br>
+              <br> Or go straight into start game if yer feelin' lucky.</p>
+            <p class="start"> Beginning in <span id="pageBeginCountdownText">5 </span> seconds</p>
+            <div class="left">
+             <p class="score" id="score">score</p>
+             <p class = "attempts">attempts</p>
+            </div>
+            <p class = "message" id="messageArea"></p>
+            <p class="textinInstructions">Ahoy hearties! Listen here fer th' rules o' th' game.<br>
+              <br>
+              Th' objective o' th' game be t' be th' first player t' sink th' most ships afore th' timer runs out.<br>
+              <br>
+              Ye'll be competin' wit' yer matey.<br>
+              <br>
+              ye'll be able t' see th' ships fer a second so remember well.<br>
+              <br>
+              Th' player wit' th' most points will be on top o' th' leaderboards.<br>
+              <br>
+              Get ready.<br>
+              <br>
+              Start shootin'.<br>
+              <br>
+            </p>
+          </div>
+        </div>
+      <h3 id="winner">winner</h3>
+      <div class="ship">
+        <table class = "grid1">
+          <tr>
+            <td class= "cell" id="square1"></td>
+            <td class= "cell" id="square2"></td>
+            <td class= "cell" id="square3"></td>
+            <td class= "cell" id="square4"></td>
+            <td class= "cell" id="square5"></td>
+            <td class= "cell" id="square6"></td>
+            <td class= "cell" id="square7"></td>
+            <td class= "cell" id="square8"></td>
+            <td class= "cell" id="square9"></td>
+          </tr>
+          <tr>
+            <td class= "cell" id="square10"></td>
+            <td class= "cell" id="square11"></td>
+            <td class= "cell" id="square12"></td>
+            <td class= "cell" id="square13"></td>
+            <td class= "cell" id="square14"></td>
+            <td class= "cell" id="square15"></td>
+            <td class= "cell" id="square16"></td>
+            <td class= "cell" id="square17"></td>
+            <td class= "cell" id="square18"></td>
+          </tr>
+          <tr>
+            <td class= "cell" id="square19"></td>
+            <td class= "cell" id="square20"></td>
+            <td class= "cell" id="square21"></td>
+            <td class= "cell" id="square22"></td>
+            <td class= "cell" id="square23"></td>
+            <td class= "cell" id="square24"></td>
+            <td class= "cell" id="square25"></td>
+            <td class= "cell" id="square26"></td>
+            <td class= "cell" id="square27"></td>
+          </tr>
+          <tr>
+            <td class= "cell" id="square28"></td>
+            <td class= "cell" id="square29"></td>
+            <td class= "cell" id="square30"></td>
+            <td class= "cell" id="square31"></td>
+            <td class= "cell" id="square32"></td>
+            <td class= "cell" id="square33"></td>
+            <td class= "cell" id="square34"></td>
+            <td class= "cell" id="square35"></td>
+            <td class= "cell" id="square36"></td>
+          </tr>
+          <tr>
+            <td class= "cell" id="square37"></td>
+            <td class= "cell" id="square38"></td>
+            <td class= "cell" id="square39"></td>
+            <td class= "cell" id="square40"></td>
+            <td class= "cell" id="square41"></td>
+            <td class= "cell" id="square42"></td>
+            <td class= "cell" id="square43"></td>
+            <td class= "cell" id="square44"></td>
+            <td class= "cell" id="square45"></td>
+          </tr>
+          <tr>
+            <td class= "cell" id="square46"></td>
+            <td class= "cell" id="square47"></td>
+            <td class= "cell" id="square48"></td>
+            <td class= "cell" id="square49"></td>
+            <td class= "cell" id="square50"></td>
+            <td class= "cell" id="square51"></td>
+            <td class= "cell" id="square52"></td>
+            <td class= "cell" id="square53"></td>
+            <td class= "cell" id="square54"></td>
+          </tr>
+          <tr>
+            <td class= "cell" id="square55"></td>
+            <td class= "cell" id="square56"></td>
+            <td class= "cell" id="square57"></td>
+            <td class= "cell" id="square58"></td>
+            <td class= "cell" id="square59"></td>
+            <td class= "cell" id="square60"></td>
+            <td class= "cell" id="square61"></td>
+            <td class= "cell" id="square62"></td>
+            <td class= "cell" id="square63"></td>
+          </tr>
+          <tr>
+            <td class= "cell" id="square64"></td>
+            <td class= "cell" id="square65"></td>
+            <td class= "cell" id="square66"></td>
+            <td class= "cell" id="square67"></td>
+            <td class= "cell" id="square68"></td>
+            <td class= "cell" id="square69"></td>
+            <td class= "cell" id="square70"></td>
+            <td class= "cell" id="square71"></td>
+            <td class= "cell" id="square72"></td>
+          </tr>
+          <tr>
+            <td class= "cell" id="square73"></td>
+            <td class= "cell" id="square74"></td>
+            <td class= "cell" id="square75"></td>
+            <td class= "cell" id="square76"></td>
+            <td class= "cell" id="square77"></td>
+            <td class= "cell" id="square78"></td>
+            <td class= "cell" id="square79"></td>
+            <td class= "cell" id="square80"></td>
+            <td class= "cell" id="square81"></td>
+          </tr>
+      </table>
+    </div>
+  </body>
+</html>
